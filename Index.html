@@ -2,10 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi web</title>
+  <title>Ejemplo gráfico simple</title>
+  <style>
+    /* Esto le da estilo al cuadrado */
+    #cuadrado {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute; /* permite moverlo con left/top */
+      left: 0px;          /* posición inicial */
+      top: 50px;
+    }
+  </style>
 </head>
 <body>
-  <h1>FUNCIONA 🔥</h1>
-  <p>Mi página ya está en Internet.</p>
+  <div id="cuadrado"></div> <!-- Aquí está el cuadrado -->
+
+  <script>
+    // Esto hace que el cuadrado se mueva
+    let pos = 0;
+    function mover() {
+      pos += 2; // se mueve 2px por frame
+      if(pos > window.innerWidth) pos = -100; // reinicia al salir de la pantalla
+      document.getElementById('cuadrado').style.left = pos + 'px';
+      requestAnimationFrame(mover); // llama de nuevo para animar
+    }
+    mover(); // iniciamos la animación
+  </script>
 </body>
 </html>
